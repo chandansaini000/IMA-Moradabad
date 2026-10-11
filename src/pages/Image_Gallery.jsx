@@ -69,50 +69,96 @@ export default function Image_Gallery() {
             aspect: 'aspect-[3/2]'
         },
         {
-            id: 6,
-            image: '/gallery-7.jpg',
+            id: 11,
+            image: '/WhatsApp Image 2026-10-10 at 5.03.52 PM.jpeg',
+            category: 'EDUCATION',
+            title: 'Mental Health Awareness Session',
+            description: 'An interactive awareness session helping students understand mental health, wellbeing, and the importance of seeking support.',
+            date: '10 Oct 2026',
+            featured: true,
+            aspect: 'aspect-video'
+        },
+        {
+            id: 12,
+            image: '/WhatsApp Image 2026-10-10 at 5.03.53 PM.jpeg',
+            category: 'EDUCATION',
+            title: 'Student Awareness Programme',
+            description: 'Students participate in an informative programme focused on healthy habits, emotional wellbeing, and community awareness.',
+            date: '10 Oct 2026',
+            aspect: 'aspect-video'
+        },
+        {
+            id: 13,
+            image: '/WhatsApp Image 2026-10-10 at 5.03.54 PM.jpeg',
             category: 'COMMUNITY',
-            title: 'Girls Day Health Initiative',
-            description: 'Free pediatric and gynecological consultations alongside nutritional supplements distribution for 1500+ daughters.',
-            date: '15 Jan 2026',
-            hasVideo: true,
+            title: 'Community Outreach Address',
+            description: 'A community address bringing students, educators, and healthcare professionals together for a healthier future.',
+            date: '10 Oct 2026',
+            aspect: 'aspect-video'
+        },
+        {
+            id: 14,
+            image: '/WhatsApp Image 2026-10-10 at 5.03.57 PM (1).jpeg',
+            category: 'EVENTS',
+            title: 'Community Health Programme',
+            description: 'Healthcare professionals share practical guidance with students during the 2026–27 outreach programme.',
+            date: '10 Oct 2026',
+            aspect: 'aspect-[3/4]'
+        },
+        {
+            id: 15,
+            image: '/WhatsApp Image 2026-10-10 at 5.03.57 PM.jpeg',
+            category: 'COMMUNITY',
+            title: 'Addressing the Student Community',
+            description: 'A large student gathering takes part in an engaging community awareness event held on the school campus.',
+            date: '10 Oct 2026',
+            aspect: 'aspect-[4/3]'
+        },
+        {
+            id: 16,
+            image: '/WhatsApp Image 2026-10-10 at 5.03.59 PM.jpeg',
+            category: 'EVENTS',
+            title: 'Health Awareness Gathering',
+            description: 'Students and faculty come together for an outdoor health awareness gathering during the 2026–27 session.',
+            date: '10 Oct 2026',
+            aspect: 'aspect-[4/3]'
+        },
+        {
+            id: 17,
+            image: '/561ff335-03db-4316-8247-2814caa5a806.jpg',
+            category: 'EDUCATION',
+            title: 'Mental Health Lecture & Keynote',
+            description: 'Keynote address by expert speaker on holistic health and mental well-being during the session.',
+            date: '11 Oct 2026',
+            featured: true,
+            aspect: 'aspect-[3/4]'
+        },
+        {
+            id: 18,
+            image: '/8c19a607-7d5a-4ae1-9d11-31d9fecd3493.jpg',
+            category: 'EVENTS',
+            title: 'Felicitation & Green Welcome',
+            description: 'Presenting a token of appreciation and felicitating guest speakers during the institutional program.',
+            date: '11 Oct 2026',
+            aspect: 'aspect-[3/4]'
+        },
+        {
+            id: 19,
+            image: '/mentalhealth1.jpeg',
+            category: 'AWARENESS',
+            title: 'Mental Health Initiative - Press & Outreach Launch',
+            description: 'Public Outreach Programme 2026-27 "Nurture The Mind Shape The Future" launched by President Dr. Anant Rana, Hon. Secretary Dr. Dishanter Goel, and Hon. Treasurer Dr. Anurag Dubey.',
+            date: '11 Oct 2026',
             featured: true,
             aspect: 'aspect-[4/3]'
         },
         {
-            id: 7,
-            image: '/gallery-8.jpg',
-            category: 'EDUCATION',
-            title: 'Medical Training Workshops',
-            description: 'Advanced hands-on surgical and diagnostic workshops enhancing clinical skills for upcoming doctors.',
-            date: '10 Feb 2026',
-            aspect: 'aspect-[16/10]'
-        },
-        {
-            id: 8,
-            image: '/gallery-9.jpg',
-            category: 'SEMINARS',
-            title: 'Healthcare Symposium 2026',
-            description: 'Eminent medical professors delivering keynote sessions on modern clinical interventions and digital health.',
-            date: '22 Mar 2026',
-            aspect: 'aspect-[4/5]'
-        },
-        {
-            id: 9,
-            image: '/gallery-10.jpg',
-            category: 'EVENTS',
-            title: 'Community Blood Donation',
-            description: 'Voluntary donors step forward in record numbers to bolster Moradabad blood banks for trauma and emergency patients.',
-            date: '14 May 2026',
-            aspect: 'aspect-square'
-        },
-        {
-            id: 10,
-            image: '/gallery-11.jpg',
-            category: 'INSPIRATION',
-            title: 'Excellence In Healthcare',
-            description: 'Upholding highest medical ethics, patient dignity, and comprehensive care standards across all hospitals in Moradabad.',
-            date: '18 Jun 2026',
+            id: 20,
+            image: '/mentalhealth2.jpeg',
+            category: 'COMMUNITY',
+            title: 'Mental Health Initiative - Executive Address',
+            description: 'President, Secretary, and Treasurer addressing the community during the IMA Moradabad Mental Health Initiative programme.',
+            date: '11 Oct 2026',
             aspect: 'aspect-[4/3]'
         }
     ];

@@ -7,7 +7,8 @@ import {
   Calendar,
   Award,
   Users,
-  ArrowRight
+  ArrowRight,
+  Sparkles
 } from 'lucide-react';
 import { getUpcomingEvents, formatEventDate } from '../data/events';
 
@@ -15,6 +16,35 @@ export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const navigate = useNavigate();
+
+  const campaignSlides = [
+    {
+      title: "Mental Health Awareness Campaign",
+      subtitle: "15-Day Public Outreach | 2026–27",
+      description:
+        "Led by Dr. Anant Rana (President) and Dr. Dishanter Goel (Secretary), IMA Moradabad champions youth mental wellness and community health across schools.",
+      cta: "Explore Campaign",
+      ctaLink: "/imagegallery?year=2026%2F27",
+      ctaSecondary: "Watch Videos",
+      ctaSecondaryLink: "/videogallery?year=2026%2F27",
+      gradient: "from-teal-700 to-emerald-700",
+      icon: Sparkles,
+      image: "/welcome-ima.jpg"
+    },
+    {
+      title: "School-Based Mental Health Initiative",
+      subtitle: "IMA Moradabad Press Announcement",
+      description:
+        "Educating students on emotional wellbeing, psychological changes, and responsible screen time in partnership with Moradabad Neurosciences Association & Mind Body Foundation.",
+      cta: "View Highlights",
+      ctaLink: "/imagegallery?year=2026%2F27",
+      ctaSecondary: "Read More",
+      ctaSecondaryLink: "/about",
+      gradient: "from-teal-700 to-emerald-700",
+      icon: Sparkles,
+      image: "/9ocotober.jpeg"
+    }
+  ];
 
   const standardSlides = [
     {
@@ -85,7 +115,7 @@ export default function HeroSlider() {
   ];
 
   const featuredEvent = getUpcomingEvents()[0];
-  const slides = featuredEvent ? [{
+  const eventSlide = featuredEvent ? [{
     title: featuredEvent.title,
     subtitle: featuredEvent.status,
     description: `${formatEventDate(featuredEvent)} | ${featuredEvent.venue}. ${featuredEvent.shortDescription}`,
@@ -96,7 +126,9 @@ export default function HeroSlider() {
     gradient: 'from-teal-700 to-emerald-700',
     icon: Calendar,
     image: featuredEvent.image
-  }, ...standardSlides] : standardSlides;
+  }] : [];
+
+  const slides = [...eventSlide, ...campaignSlides, ...standardSlides];
 
   useEffect(() => {
     if (!isAutoPlaying) return;

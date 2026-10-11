@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { 
-    X, 
-    Play, 
-    ChevronLeft, 
-    ChevronRight, 
-    Video as VideoIcon, 
-    Calendar, 
-    Sparkles, 
-    ExternalLink 
+import {
+    X,
+    Play,
+    ChevronLeft,
+    ChevronRight,
+    Video as VideoIcon,
+    Calendar,
+    Sparkles,
+    ExternalLink
 } from 'lucide-react';
 import Banner from '../components/ui/Banner';
 import { useSearchParams } from 'react-router-dom';
@@ -48,6 +48,62 @@ const Video_Gallery = () => {
             year: "2025",
             description: "Successful voluntary blood donation camp conducted by IMA Moradabad saving multiple critical lives across the community."
         },
+
+        {
+            id: 9,
+            title: "Mental Health Initiative - Opening Session",
+            videoSrc: "/mentalhealth1.mp4",
+            category: "INITIATIVE",
+            date: "11 Oct 2026",
+            year: "2026",
+            description: "Mental Health Initiative Programme conducted under the leadership of President, Secretary, and Treasurer of IMA Moradabad."
+        },
+        {
+            id: 10,
+            title: "Mental Health Initiative - Keynote Address",
+            videoSrc: "/mentalhealth2.mp4",
+            category: "AWARENESS",
+            date: "11 Oct 2026",
+            year: "2026",
+            description: "Specialist address discussing psychological well-being, early support, and youth mental health guidance."
+        },
+        {
+            id: 11,
+            title: "Mental Health Initiative - Interactive Session",
+            videoSrc: "/mentalhealth3.mp4",
+            category: "COMMUNITY",
+            date: "11 Oct 2026",
+            year: "2026",
+            description: "Interactive discussions and Q&A during the IMA Moradabad Mental Health Initiative."
+        },
+        {
+            id: 12,
+            title: "Mental Health Initiative - Leadership Remarks",
+            videoSrc: "/mentalhealth4.mp4",
+            category: "LEADERSHIP",
+            date: "11 Oct 2026",
+            year: "2026",
+            description: "President, Secretary & Treasurer inspiring participants on community health advocacy and social responsibility."
+        },
+        {
+            id: 13,
+            title: "Mental Health Initiative - Awareness Talk Part 1",
+            videoSrc: "/mentalhealth5.mp4",
+            category: "EDUCATION",
+            date: "11 Oct 2026",
+            year: "2026",
+            description: "Essential life skills, stress reduction techniques, and emotional wellness strategies presented by doctors."
+        },
+        {
+            id: 14,
+            title: "Mental Health Initiative - Awareness Talk Part 2",
+            videoSrc: "/mentalhealth6.mp4",
+            category: "EDUCATION",
+            date: "11 Oct 2026",
+            year: "2026",
+            description: "Comprehensive guidance session highlighting mental health stigma eradication and institutional counseling."
+        },
+       
         {
             id: 4,
             title: "COVID-19 Vaccination & Flu Awareness",
@@ -97,7 +153,7 @@ const Video_Gallery = () => {
             date: "2026",
             year: "2026",
             description: "Symposium on medical jurisprudence, ethical patient care standards, and doctor-patient trust building for Moradabad physicians."
-        }
+        },
     ];
 
     // Map calendar years in the archive to IMA session labels.
@@ -165,11 +221,10 @@ const Video_Gallery = () => {
                                 <button
                                     key={yr}
                                     onClick={() => setSelectedYear(yr)}
-                                    className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer shadow-xs ${
-                                        selectedYear === yr
+                                    className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer shadow-xs ${selectedYear === yr
                                             ? 'bg-rose-600 text-white shadow-md scale-105 ring-2 ring-rose-500/30'
                                             : 'bg-white text-slate-700 hover:bg-rose-50 border border-slate-200 hover:border-rose-300'
-                                    }`}
+                                        }`}
                                 >
                                     {yr === 'ALL' ? 'All Years' : yr}
                                 </button>
@@ -189,32 +244,42 @@ const Video_Gallery = () => {
                             >
                                 {/* Thumbnail Container with Play Overlay */}
                                 <div className="relative aspect-[9/14] bg-slate-950 overflow-hidden">
-                                    <img
-                                        src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
-                                        alt={video.title}
-                                        loading="lazy"
-                                        className="w-full h-full object-cover opacity-90 transition-transform duration-500 ease-out group-hover:scale-105 group-hover:opacity-100"
-                                    />
-                                    
+                                    {video.videoSrc ? (
+                                        <video
+                                            src={video.videoSrc}
+                                            muted
+                                            playsInline
+                                            preload="metadata"
+                                            className="w-full h-full object-cover opacity-90 transition-transform duration-500 ease-out group-hover:scale-105 group-hover:opacity-100"
+                                        />
+                                    ) : (
+                                        <img
+                                            src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
+                                            alt={video.title}
+                                            loading="lazy"
+                                            className="w-full h-full object-cover opacity-90 transition-transform duration-500 ease-out group-hover:scale-105 group-hover:opacity-100"
+                                        />
+                                    )}
+
                                     {/* Gradient overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
                                     {/* Category Pill */}
-                                    <div className="absolute top-3 left-3">
+                                    <div className="absolute top-3 left-3 z-10">
                                         <span className="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-white/20">
                                             {video.category}
                                         </span>
                                     </div>
 
                                     {/* Pulsing Play Button */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                         <div className="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg group-hover:bg-red-600 group-hover:scale-110 transition-all duration-300">
                                             <Play className="w-5 h-5 fill-white ml-0.5" />
                                         </div>
                                     </div>
 
                                     {/* Bottom Title on Thumbnail */}
-                                    <div className="absolute bottom-3 left-3 right-3 text-white">
+                                    <div className="absolute bottom-3 left-3 right-3 text-white z-10 pointer-events-none">
                                         <p className="text-[11px] text-rose-300 font-semibold mb-0.5">Click to Play</p>
                                         <h3 className="text-xs sm:text-sm font-bold leading-snug line-clamp-2 drop-shadow-sm font-libre">
                                             {video.title}
@@ -246,7 +311,7 @@ const Video_Gallery = () => {
                 POPUP VIDEO PLAYER MODAL
             ========================================================= */}
             {selectedVideo && (
-                <div 
+                <div
                     className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 transition-all duration-300 animate-in fade-in"
                     onClick={closeModal}
                 >
@@ -260,20 +325,29 @@ const Video_Gallery = () => {
                     </button>
 
                     {/* Modal Content Box */}
-                    <div 
+                    <div
                         className="relative max-w-3xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-white/10"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* 16:9 Responsive Video Player */}
-                        <div className="relative aspect-video bg-black">
-                            <iframe
-                                src={`${selectedVideo.embedUrl}?autoplay=1`}
-                                title={selectedVideo.title}
-                                className="w-full h-full"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowFullScreen
-                            ></iframe>
+                        <div className="relative aspect-video bg-black flex items-center justify-center">
+                            {selectedVideo.videoSrc ? (
+                                <video
+                                    src={selectedVideo.videoSrc}
+                                    controls
+                                    autoPlay
+                                    className="w-full h-full object-contain"
+                                />
+                            ) : (
+                                <iframe
+                                    src={`${selectedVideo.embedUrl}?autoplay=1`}
+                                    title={selectedVideo.title}
+                                    className="w-full h-full"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                ></iframe>
+                            )}
                         </div>
 
                         {/* Video Info under Player */}
@@ -295,14 +369,16 @@ const Video_Gallery = () => {
                                 </p>
                             </div>
 
-                            <a
-                                href={`https://www.youtube.com/watch?v=${selectedVideo.videoId}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hidden sm:inline-flex items-center gap-1.5 text-xs text-rose-300 hover:text-white bg-white/10 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors"
-                            >
-                                Open on YouTube <ExternalLink className="w-3 h-3" />
-                            </a>
+                            {selectedVideo.videoId && (
+                                <a
+                                    href={`https://www.youtube.com/watch?v=${selectedVideo.videoId}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hidden sm:inline-flex items-center gap-1.5 text-xs text-rose-300 hover:text-white bg-white/10 px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors"
+                                >
+                                    Open on YouTube <ExternalLink className="w-3 h-3" />
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,24 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Award, Users, BookOpen, Shield, TrendingUp, CheckCircle, ArrowRight, Stethoscope, Heart, Calendar, Video, FileText, Briefcase, Globe, Target, Sparkles, Building2, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { Award, Users, BookOpen, Shield, TrendingUp, CheckCircle, ArrowRight, Stethoscope, Heart, Calendar, Video, FileText, Briefcase, Globe, Target, Sparkles, Building2, ChevronRight, CheckCircle2, ClipboardPen } from 'lucide-react';
 import AnimatedCounter from '../components/ui/AnimatedCounter';
 import MembersDirectorySection from '../components/MembersDirectorySection';
 
 export default function About() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [searchParams] = useSearchParams();
+  const storyParam = searchParams.get('story');
+  const [selectedStoryId, setSelectedStoryId] = useState(storyParam === '2' ? 2 : 1);
+
+  useEffect(() => {
+    if (storyParam) {
+      setSelectedStoryId(storyParam === '2' ? 2 : 1);
+      const element = document.getElementById('campaign-story');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [storyParam]);
 
   const stats = [
     { target: 5000, suffix: '+', label: 'Active Members', icon: Users },
@@ -360,6 +373,164 @@ export default function About() {
         {/* Overview Tab */}
         {activeTab === 'overview' && (
           <div className="space-y-16">
+            {/* =========================================================
+                STORY DETAIL SECTION (MENTAL HEALTH CAMPAIGN)
+            ========================================================= */}
+            <div 
+              id="campaign-story" 
+              className="scroll-mt-24 bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl border border-emerald-100/80 relative overflow-hidden"
+              data-aos="fade-up"
+            >
+              {/* Top Accent Gradient Bar */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-600" />
+
+              {/* Story Switcher Tabs */}
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-5 border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <span className="p-2 bg-emerald-50 text-emerald-700 rounded-xl">
+                    <ClipboardPen className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50/80 px-2.5 py-0.5 rounded-full">
+                      Featured Public Initiative
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 font-libre">
+                      Public Health Stories & Initiatives (2026–27)
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setSelectedStoryId(1)}
+                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer ${
+                      selectedStoryId === 1
+                        ? 'bg-emerald-600 text-white shadow-md'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    }`}
+                  >
+                    Story 1: 15-Day Campaign
+                  </button>
+                  <button
+                    onClick={() => setSelectedStoryId(2)}
+                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer ${
+                      selectedStoryId === 2
+                        ? 'bg-emerald-600 text-white shadow-md'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    }`}
+                  >
+                    Story 2: School Initiative
+                  </button>
+                </div>
+              </div>
+
+              {/* Story 1 Details */}
+              {selectedStoryId === 1 && (
+                <div className="grid md:grid-cols-12 gap-6 lg:gap-8 items-center animate-in fade-in duration-300">
+                  <div className="md:col-span-5 relative rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-slate-50 aspect-[4/3]">
+                    <img 
+                      src="/welcome-ima.jpg" 
+                      alt="Mental Health Awareness Campaign"
+                      className="w-full h-full object-cover" 
+                    />
+                    <div className="absolute bottom-3 left-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg text-white text-xs">
+                      Session 2026–27 | IMA Moradabad
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-7 space-y-4">
+                    <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      15-Day Public Outreach Programme
+                    </div>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 font-libre leading-snug">
+                      Mental Health Awareness Campaign | IMA Moradabad
+                    </h2>
+
+                    <div className="text-slate-600 text-sm sm:text-[15px] space-y-3 leading-relaxed">
+                      <p>
+                        Led by <strong className="text-slate-900 font-semibold">Dr. Anant Rana as President, and Dr. Dishanter Goel as Secretary (2026–27)</strong>, IMA Moradabad continues to champion physician rights and community wellness through meaningful public outreach initiatives.
+                      </p>
+                      <p>
+                        As part of its <strong className="text-slate-900 font-semibold">15-day Mental Health Awareness Campaign</strong>, launched around World Mental Health Day on October 10, 2026, IMA Moradabad, in collaboration with the Moradabad Neurosciences Association and Mind Body Foundation, is committed to promoting mental well-being among schoolchildren and the wider community.
+                      </p>
+                      <p>
+                        Through school visits, interactive sessions on emotional and mental changes, responsible mobile and social media use, and dedicated discussions on police personnel's mental health, the initiative aims to encourage awareness, understanding, and a healthier community.
+                      </p>
+                    </div>
+
+                    <div className="pt-2 flex flex-wrap gap-3">
+                      <Link
+                        to="/imagegallery?year=2026%2F27"
+                        className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition shadow-sm"
+                      >
+                        View Campaign Gallery <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                      <Link
+                        to="/videogallery?year=2026%2F27"
+                        className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition"
+                      >
+                        Watch Campaign Videos <Video className="w-3.5 h-3.5 text-emerald-600" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Story 2 Details */}
+              {selectedStoryId === 2 && (
+                <div className="grid md:grid-cols-12 gap-6 lg:gap-8 items-center animate-in fade-in duration-300">
+                  <div className="md:col-span-5 relative rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-slate-50 aspect-[4/3]">
+                    <img 
+                      src="/9ocotober.jpeg" 
+                      alt="IMA Moradabad Press Conference"
+                      className="w-full h-full object-cover" 
+                    />
+                    <div className="absolute bottom-3 left-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg text-white text-xs">
+                      Press Conference | 9 October 2026 | IMA Bhawan
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-7 space-y-4">
+                    <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Press & Media Announcement
+                    </div>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 font-libre leading-snug">
+                      IMA Moradabad Announces School-Based Mental Health Awareness Campaign
+                    </h2>
+
+                    <div className="text-slate-600 text-sm sm:text-[15px] space-y-3 leading-relaxed">
+                      <p>
+                        On October 9, 2026, during a press conference at IMA Bhawan, Moradabad, <strong className="text-slate-900 font-semibold">Dr. Anant Rana (President) and Dr. Dishanter Goel (Secretary), IMA Moradabad (2026–27)</strong>, announced that the association would conduct mental health awareness sessions in schools as part of its public outreach initiative.
+                      </p>
+                      <p>
+                        Beginning October 10, the initiative aims to educate schoolchildren about mental health, emotional and psychological changes, and the responsible use of mobile phones and social media.
+                      </p>
+                      <p>
+                        In collaboration with the Moradabad Neurosciences Association and Mind Body Foundation, IMA Moradabad is taking this initiative forward to encourage early awareness, emotional well-being, and a healthier future for children.
+                      </p>
+                    </div>
+
+                    <div className="pt-2 flex flex-wrap gap-3">
+                      <Link
+                        to="/imagegallery?year=2026%2F27"
+                        className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition shadow-sm"
+                      >
+                        View Press Gallery <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                      <Link
+                        to="/videogallery?year=2026%2F27"
+                        className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition"
+                      >
+                        Watch Press Coverage <Video className="w-3.5 h-3.5 text-emerald-600" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* =========================================================
                 SECTION 1: OUR LEGACY & OUR VISION (Compressed & Compact)
             ========================================================= */}
