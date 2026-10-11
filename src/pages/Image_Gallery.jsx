@@ -219,11 +219,9 @@ export default function Image_Gallery() {
     };
 
     const activeItem = activeImageIndex !== null ? filteredItems[activeImageIndex] : null;
-
     return (
         <>
             <Banner title="IMAGE GALLERY" />
-
             <div className="min-h-screen bg-slate-50/70 py-10 sm:py-14 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     
